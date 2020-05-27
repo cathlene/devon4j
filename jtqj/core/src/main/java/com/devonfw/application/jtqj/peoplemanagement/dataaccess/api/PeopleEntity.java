@@ -1,7 +1,12 @@
 package com.devonfw.application.jtqj.peoplemanagement.dataaccess.api;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 import com.devonfw.application.jtqj.general.dataaccess.api.ApplicationPersistenceEntity;
 import com.devonfw.application.jtqj.peoplemanagement.common.api.People;
@@ -12,6 +17,11 @@ import com.devonfw.application.jtqj.peoplemanagement.common.api.People;
 @Entity
 @Table(name = "PEOPLE")
 public class PeopleEntity extends ApplicationPersistenceEntity implements People {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  @Column(name = "id_people")
+  private Long id;
 
   private String people_name;
 
@@ -33,6 +43,35 @@ public class PeopleEntity extends ApplicationPersistenceEntity implements People
   public void setPeople_name(String people_name) {
 
     this.people_name = people_name;
+  }
+
+  @Override
+  public Long getId() {
+
+    // TODO Auto-generated method stub
+    return this.id;
+  }
+
+  @Override
+  public void setId(Long id) {
+
+    this.id = id;
+
+  }
+
+  @Override
+  @Version
+  public int getModificationCounter() {
+
+    // TODO Auto-generated method stub
+    return 0;
+  }
+
+  @Override
+  public void setModificationCounter(int modificationCounter) {
+
+    // TODO Auto-generated method stub
+
   }
 
 }
