@@ -2,6 +2,7 @@ package com.devonfw.application.jtqj.general.dataaccess.api;
 
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
+import javax.persistence.Version;
 
 import com.devonfw.application.jtqj.general.common.api.ApplicationEntity;
 import com.devonfw.module.basic.common.api.entity.PersistenceEntity;
@@ -19,7 +20,7 @@ public abstract class ApplicationPersistenceEntity implements ApplicationEntity,
 
   // private Long id;
 
-  // private int modificationCounter;
+  private int modificationCounter;
 
   /**
    * The constructor.
@@ -43,18 +44,18 @@ public abstract class ApplicationPersistenceEntity implements ApplicationEntity,
   // this.id = id;
   // }
 
-  // @Override
-  // @Version
-  // public int getModificationCounter() {
-  //
-  // return this.modificationCounter;
-  // }
-  //
-  // @Override
-  // public void setModificationCounter(int version) {
-  //
-  // this.modificationCounter = version;
-  // }
+  @Override
+  @Version
+  public int getModificationCounter() {
+
+    return this.modificationCounter;
+  }
+
+  @Override
+  public void setModificationCounter(int version) {
+
+    this.modificationCounter = version;
+  }
 
   // @Override
   // public String toString() {
